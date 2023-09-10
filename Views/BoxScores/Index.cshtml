@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BoxScores>
+
+@{
+    ViewData["Title"] = "BoxScores";
+}
+
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Game ID
+            </th>
+            <th>
+                Away Team
+            </th>
+            <th>
+                Home Team
+            </th>
+            <th>
+                Away Score
+            </th>
+            <th>
+                Home Score
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.game.id
+                </td>
+                <td>
+                    <img src="@obj.teams[0].WikipediaLogoUrl" style="height:75px"/>
+                </td>
+                <td>
+                    <img src="@obj.teams[1].WikipediaLogoUrl" style="height:75px" />
+                </td>
+                <td>
+                    @obj.game.scores.visitors.points
+                </td>
+                <td>
+                    @obj.game.scores.home.points
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
